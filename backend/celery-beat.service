@@ -1,0 +1,14 @@
+[Unit]
+Description=Celery Beat
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/www/yue/vue-django-project/vue3-company/backend
+ExecStart=/root/.p38virtualenvs/vueDjango/bin/celery -A backend.celery_app beat --loglevel=INFO
+Restart=always
+Environment="PATH=/root/.p38virtualenvs/vueDjango/bin"
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+{
+  "files": [],
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "include": [
+    "src/**/*",
+    "src/**/*.vue",
+    "src/vite-env.d.ts"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "strict": false, // 临时关闭严格模式（不推荐长期使用）
+    "skipLibCheck": true,
+    "types": ["vite/client"]
+  },
+//  "references": [
+//    { "path": "./tsconfig.app.json" },
+//    { "path": "./tsconfig.node.json" }
+//  ]
+}

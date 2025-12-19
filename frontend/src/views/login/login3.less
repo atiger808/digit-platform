@@ -1,0 +1,277 @@
+// login.less
+.login-container {
+  width: 100%;
+  height: 100%;
+  background: url(@/assets/images/login/login-bg4.png) no-repeat center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // 定义移动端断点
+  @mobile-breakpoint: 768px;
+
+  .box-item {
+    // PC端默认样式
+    width: 444px;
+    height: 600px;
+
+    &.desc {
+      background: #ffffff;
+      border-radius: 12px 0px 0px 12px;
+      box-shadow: 0px 16px 73px 8px rgba(203, 203, 203, 0.2);
+      padding: 34px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &.login {
+      background: #ffffff;
+      border-radius: 0px 12px 12px 0px;
+      padding: 34px 42px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login-qr {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 66px;
+      height: 66px;
+    }
+
+    .welcome {
+      padding-top: 35px;
+      p {
+        color: #333333;
+        line-height: 25px;
+        letter-spacing: 0.26px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 24px;
+      }
+      .sub-welcome {
+        padding: 10px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        color: #ffffff;
+        line-height: 25px;
+        letter-spacing: 0.26px;
+        opacity: 0.96;
+        background: #1748fd;
+        border-radius: 2px 22px 2px 2px;
+      }
+    }
+
+    .welcome-img {
+      width: 350px;
+      height: 350px;
+    }
+
+    .app-qr-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-top: 20px;
+      .app-qr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 50%;
+        > img {
+          width: 112px;
+          height: 112px;
+        }
+
+        .qr-desc {
+          display: flex;
+          align-items: center;
+          margin-top: 11px;
+          font-size: 12px;
+          font-weight: 500;
+          text-align: center;
+          color: #ffffff;
+          > img {
+            width: 15px;
+            height: 18px;
+            margin-right: 9px;
+          }
+        }
+
+        .qr-desc-marquee {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          margin-top: 11px;
+          font-size: 12px;
+          font-weight: 500;
+          text-align: center;
+          color: #ffffff;
+
+          @keyframes marquee {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-30%);
+            }
+          }
+
+          .marquee {
+            flex: 1;
+            overflow: hidden;
+            span {
+              display: inline-block;
+              width: 100%;
+              white-space: nowrap;
+              animation: marquee 5s linear infinite;
+            }
+          }
+        }
+      }
+    }
+
+    .login-title {
+      font-size: 20px;
+      text-align: center;
+      color: #1e1e1e;
+      margin-bottom: 35px;
+    }
+
+    .login-form {
+      .captcha-input {
+        width: 60%;
+      }
+
+      .captcha-img {
+        cursor: pointer;
+        vertical-align: middle;
+        border-style: none;
+      }
+    }
+
+    .ant-input,
+    .ant-input-affix-wrapper {
+      height: 44px;
+      border: 1px solid #ededed;
+      border-radius: 4px;
+    }
+
+    .code-btn {
+      height: 44px;
+      padding: 4px 5px;
+      width: 108px;
+    }
+
+    .eye-box {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      .eye-icon {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .btn {
+      width: 100%;
+      height: 50px;
+      background: #1748fd;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+      line-height: 50px;
+      cursor: pointer;
+    }
+  }
+
+  .more {
+    margin-top: 30px;
+    .title-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > p {
+        margin-bottom: 0;
+      }
+    }
+    .line {
+      width: 110px;
+      height: 1px;
+      background: #e6e6e6;
+    }
+    .title {
+      font-size: 12px;
+      font-weight: 500;
+      color: #a1aebe;
+      margin: 0 19px;
+    }
+    .login-type {
+      padding: 0 5px;
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      > img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  // ============= 移动端响应式样式 =============
+  @media (max-width: @mobile-breakpoint) {
+    // 核心修改：当屏幕小于等于768px时，将flex布局从水平(row)改为垂直(column)
+    flex-direction: column;
+    // 增加整体内边距，让内容不贴边
+    padding: 40px 20px;
+    // 防止内容溢出
+    box-sizing: border-box;
+
+    // 修改 .box-item 的样式
+    .box-item {
+      // 覆盖PC端的固定宽度和高度
+      width: 100% !important; // 占满父容器宽度
+      max-width: 400px; // 限制最大宽度，避免在大手机上过宽
+      height: auto !important; // 高度自适应内容
+      margin-bottom: 20px; // 两个区块之间留出间距
+
+      // 移除PC端的左右圆角，改为上下都圆角
+      &.desc {
+        border-radius: 12px;
+        padding: 20px; // 减小内边距
+      }
+
+      &.login {
+        border-radius: 12px;
+        padding: 20px; // 减小内边距
+        // 移除二维码的绝对定位
+        .login-qr {
+          position: absolute; // 变为静态定位
+          top: 0;
+          right: 0;
+          display: block; // 确保是块级元素
+        }
+      }
+    }
+
+    // ======== 关键修改：在移动端隐藏 welcome-img 图片 ========
+    .welcome-img {
+      display: none !important;
+    }
+    .sub-welcome {
+      display: none !important;
+    }
+    // =======================================================
+  }
+}

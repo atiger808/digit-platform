@@ -1,0 +1,14 @@
+[Unit]
+Description=Celery Worker
+After=network.target
+
+[Service]
+User=celeryuser
+Group=www-data
+WorkingDirectory=/www/yue/vue-django-project/vue3-company/backend
+ExecStart=/root/.p38virtualenvs/vueDjango/bin/celery -A /www/yue/vue-django-project/vue3-company/backend/backend.celery_app worker --loglevel=INFO --concurrency=4
+Restart=always
+Environment="PATH=/root/.p38virtualenvs/vueDjango/bin"
+
+[Install]
+WantedBy=multi-user.target
