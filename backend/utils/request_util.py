@@ -208,7 +208,7 @@ def get_ip_analysis(ip):
     if ip != 'unknown' and ip:
         if getattr(settings, 'ENABLE_LOGIN_ANALYSIS_LOG', True):
             try:
-                res = requests.get(url='https://ip.django-vue-admin.com/ip/analysis', params={"ip": ip}, timeout=5)
+                res = requests.get(url='https://ip.django-vue-admin.com/ip/analysis', verify=False, params={"ip": ip}, timeout=5)
                 if res.status_code == 200:
                     res_data = res.json()
                     if res_data.get('code') == 0:
